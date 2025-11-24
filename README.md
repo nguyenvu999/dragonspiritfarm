@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hamster Kombat Clone
+
+<div align="center">
+  <img src="https://nikandr.com/og-image.jpg" alt="Nikandr - Premium Telegram Development Resources" width="600"/>
+  
+  🚀 **Looking to master Telegram Mini App development?**  
+  Visit [nikandr.com](https://nikandr.com) for the best premium content and courses for Telegram developers.
+</div>
+
+---
+
+This repository contains the initial setup and the final version of the Hamster Kombat clone project, including the basic project structure, necessary images, and icons.
+
+## Overview
+
+This project is a clone of the popular Telegram mini app, Hamster Kombat. The repository provides two branches:
+
+1. **Initial Setup**: Provides the foundational structure and assets needed to build the full application.
+2. **Final Version**: The completed application with all functionalities.
 
 ## Getting Started
 
-First, run the development server:
+To get started with either the initial setup or the final version, follow these instructions:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Cloning the Repository
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the Repository**:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```bash
+    git clone https://github.com/nikandr-surkov/Hamster-Kombat-Telegram-Mini-App-Clone.git
+    cd Hamster-Kombat-Telegram-Mini-App-Clone
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Initial Setup
 
-## Learn More
+2. **Switch to the `initial-setup` Branch**:
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git checkout initial-setup
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Install Dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+4. **Run the Development Server**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Open Your Browser**:
+
+    Navigate to localhost to see the initial setup.
+
+### Final Version
+
+2. **Switch to the `final-version` Branch**:
+
+    ```bash
+    git checkout final-version
+    ```
+
+3. **Install Dependencies**:
+
+    ```bash
+    npm install
+    ```
+
+4. **Run the Development Server**:
+
+    ```bash
+    npm run dev
+    ```
+
+5. **Open Your Browser**:
+
+    Navigate to localhost to see the final version of the application.
+
+## Author
+### Nikandr Surkov
+- 🌐 Website: https://nikandr.com
+- 📺 YouTube: https://www.youtube.com/@NikandrSurkov
+- 📢 Telegram Channel: https://t.me/NikandrApps
+- 📱 Telegram: https://t.me/nikandr_s
+- 💻 GitHub: https://github.com/nikandr-surkov
+- 🐦 Twitter: https://x.com/NikandrSurkov
+- 💼 LinkedIn: https://www.linkedin.com/in/nikandr-surkov/
+- ✍️ Medium: https://medium.com/@NikandrSurkov
+
+---
+
+Built with ❤️ for the Telegram developer community
+
