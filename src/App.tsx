@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 const DragonApp: React.FC = () => {
-  const [userData, setUserData] = useState<any>(null); // Lưu thông tin người chơi
+  const [userData, setUserData] = useState<any>(null);  // Lưu thông tin người chơi
   const [isLoading, setIsLoading] = useState(true); // Cờ để hiển thị trạng thái loading
 
   const [level, setLevel] = useState(1);
@@ -34,6 +34,14 @@ const DragonApp: React.FC = () => {
 
     fetchUserData();
   }, []);
+
+  // Hiển thị tên người dùng lên góc trái
+  const renderUserInfo = () => {
+    if (userData) {
+      return <div className="user-info">{`Chào ${userData.first_name}`}</div>;
+    }
+    return null;
+  };
 
   const startFarming = async () => {
     if (isFarmStarted) return;
@@ -99,37 +107,6 @@ const DragonApp: React.FC = () => {
     });
   };
 
-  useEffect(() => {
-    if (farming && farmEndTime) {
-      const interval = setInterval(() => {
-        const now = Date.now();
-        const diff = farmEndTime - now;
-        if (diff <= 0) {
-          clearInterval(interval);
-          setFarming(false);
-          setIsFarmStarted(false);
-          showToast('Phiên nuôi rồng hoàn thành!');
-        } else {
-          const h = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-          const m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-          const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-          setTimeLeft(`${h}:${m}:${s}`);
-        }
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [farming, farmEndTime]);
-
-  useEffect(() => {
-    if (farming && farmEndTime) {
-      const interval = setInterval(() => {
-        setGems((prevGems) => prevGems + rate);
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [farming, farmEndTime, rate]);
-
   const showToast = (text: string, ttl = 2000) => {
     const toastRoot = document.getElementById('toastRoot')!;
     toastRoot.style.display = 'block';
@@ -139,20 +116,9 @@ const DragonApp: React.FC = () => {
     }, ttl);
   };
 
-  const upgradeDragon = () => {
-    if (gems >= cost) {
-      setGems(gems - cost);
-      setLevel(level + 1);
-      setRate(rate * 1.22); 
-      setCost(cost * 1.45); 
-      showToast('Nâng cấp thành công!');
-    } else {
-      showToast('Không đủ linh thạch');
-    }
-  };
-
   return (
     <div className="app-container">
+      {renderUserInfo()}  {/* Hiển thị tên người dùng */}
       <div className="header">
         <div className="avatar">R</div>
         <div>
@@ -161,6 +127,7 @@ const DragonApp: React.FC = () => {
         </div>
       </div>
 
+      {/* Nội dung game */}
       <div className="stage">
         <div className="dragon-wrap">
           <div className="dragon-card">
@@ -188,34 +155,11 @@ const DragonApp: React.FC = () => {
         </div>
 
         <div className="controls">
-          <button
-            className="btn"
-            onClick={startFarming}
-            disabled={isFarmStarted}
-          >
+          <button className="btn" onClick={startFarming} disabled={isFarmStarted}>
             Bắt đầu nuôi rồng 
-          </button>
-          <button className="btn secondary" onClick={upgradeDragon}>
-            Nâng cấp ({cost})
           </button>
         </div>
       </div>
-
-      {/* Hiển thị thông tin người chơi khi đã fetch */}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          {userData ? (
-            <div>
-              <h2>Welcome {userData.first_name}</h2>
-              <p>Your Username: {userData.username}</p>
-            </div>
-          ) : (
-            <p>Error: Unable to fetch user data</p>
-          )}
-        </div>
-      )}
 
       <div id="modalRoot" style={{ display: 'none' }}></div>
       <div id="toastRoot" style={{ display: 'none' }}></div>
